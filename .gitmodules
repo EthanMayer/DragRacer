@@ -1,0 +1,3 @@
+[submodule "submodules/SwiftUILogger"]
+	path = submodules/SwiftUILogger
+	url = git@github.com:sbond75/SwiftUILogger.git
