@@ -17,6 +17,7 @@
 		30B603BD2A46409100C413BD /* DragRacerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B603BC2A46409100C413BD /* DragRacerUITests.swift */; };
 		30B603BF2A46409100C413BD /* DragRacerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B603BE2A46409100C413BD /* DragRacerUITestsLaunchTests.swift */; };
 		30B603CC2A46454600C413BD /* RaceContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B603CB2A46454600C413BD /* RaceContentView.swift */; };
+		54E00BDF2A4692E900D1C359 /* SwiftUILogger in Frameworks */ = {isa = PBXBuildFile; productRef = 54E00BDE2A4692E900D1C359 /* SwiftUILogger */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		303C75ED2A464EF0001D0D2D /* SwiftUILogger */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUILogger; path = ../submodules/SwiftUILogger; sourceTree = "<group>"; };
 		30B603992A46409000C413BD /* Drag Racer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drag Racer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B6039C2A46409000C413BD /* DragRacerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRacerApp.swift; sourceTree = "<group>"; };
 		30B6039E2A46409000C413BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +52,6 @@
 		30B603BE2A46409100C413BD /* DragRacerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRacerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		30B603CB2A46454600C413BD /* RaceContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceContentView.swift; sourceTree = "<group>"; };
 		30B603D32A464E8100C413BD /* SwiftUILogger */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUILogger; path = ../submodules/SwiftUILogger; sourceTree = "<group>"; };
-		30B603D42A464EC100C413BD /* SwiftUILogger */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUILogger; path = ../submodules/SwiftUILogger; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E00BDF2A4692E900D1C359 /* SwiftUILogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +88,7 @@
 				30B603B12A46409100C413BD /* DragRacerTests */,
 				30B603BB2A46409100C413BD /* DragRacerUITests */,
 				30B6039A2A46409000C413BD /* Products */,
+				54E00BDD2A4692E900D1C359 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,10 +145,15 @@
 			isa = PBXGroup;
 			children = (
 				30B603D32A464E8100C413BD /* SwiftUILogger */,
-				30B603D42A464EC100C413BD /* SwiftUILogger */,
-				303C75ED2A464EF0001D0D2D /* SwiftUILogger */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		54E00BDD2A4692E900D1C359 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +173,7 @@
 			);
 			name = DragRacer;
 			packageProductDependencies = (
+				54E00BDE2A4692E900D1C359 /* SwiftUILogger */,
 			);
 			productName = DragRacer;
 			productReference = 30B603992A46409000C413BD /* Drag Racer.app */;
@@ -447,7 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragRacer/Preview Content\"";
-				DEVELOPMENT_TEAM = 86HDH9K924;
+				DEVELOPMENT_TEAM = 34S7LV536T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -477,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragRacer/Preview Content\"";
-				DEVELOPMENT_TEAM = 86HDH9K924;
+				DEVELOPMENT_TEAM = 34S7LV536T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -615,6 +622,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54E00BDE2A4692E900D1C359 /* SwiftUILogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUILogger;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		30B603A72A46409000C413BD /* DragRacer.xcdatamodeld */ = {
