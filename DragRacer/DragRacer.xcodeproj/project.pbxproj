@@ -52,6 +52,7 @@
 		30B603BE2A46409100C413BD /* DragRacerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragRacerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		30B603CB2A46454600C413BD /* RaceContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceContentView.swift; sourceTree = "<group>"; };
 		30B603D32A464E8100C413BD /* SwiftUILogger */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUILogger; path = ../submodules/SwiftUILogger; sourceTree = "<group>"; };
+		30DA29282A48BDCD00254C93 /* DeveloperConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DeveloperConfig.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 		30B603902A46409000C413BD = {
 			isa = PBXGroup;
 			children = (
+				30DA29282A48BDCD00254C93 /* DeveloperConfig.xcconfig */,
 				30B603D22A464E8100C413BD /* Packages */,
 				30B6039B2A46409000C413BD /* DragRacer */,
 				30B603B12A46409100C413BD /* DragRacerTests */,
@@ -334,6 +336,7 @@
 /* Begin XCBuildConfiguration section */
 		30B603C02A46409100C413BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30DA29282A48BDCD00254C93 /* DeveloperConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -394,6 +397,7 @@
 		};
 		30B603C12A46409100C413BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30DA29282A48BDCD00254C93 /* DeveloperConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -454,7 +458,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragRacer/Preview Content\"";
-				DEVELOPMENT_TEAM = 34S7LV536T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -484,7 +487,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DragRacer/Preview Content\"";
-				DEVELOPMENT_TEAM = 34S7LV536T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

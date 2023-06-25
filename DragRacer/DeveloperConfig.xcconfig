@@ -1,0 +1,11 @@
+//
+//  DeveloperConfig.xcconfig
+//  DragRacer
+//
+//  Created by Sebastian Bond on 6/25/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+DEVELOPER_TEAM = "86HDH9K924"
