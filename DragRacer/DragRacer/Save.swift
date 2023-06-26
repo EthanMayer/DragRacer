@@ -23,12 +23,17 @@ struct Save: Identifiable {
     let longitude: Double
     let forecastTemperature: Double // Fahrenheit, since it needs less significant figures to be accurate (especially when getting weather from an online API)
     let forecastSky: String // cloudy/sunny, etc.
+    // TODO: this commented out weather data:
+    //let windDirection: String
+    //let windSpeed: String
     let humidity: Double
-    let atmosphericPressure: Double
+    let atmosphericPressure: Double // Kilopascals, since it needs less significant figures than inHg and also is the default for CMAltitudeData.pressure: https://developer.apple.com/documentation/coremotion/cmaltitudedata/1616152-pressure
     
     // MARK: Race details
+    // Speed units are meters per second, converted when displayed, since CLLocation.speed is in meters per second: https://developer.apple.com/documentation/corelocation/cllocation/1423798-speed
     let reactionTime: Double
     let _0to60Time: Double
+    let _330ftTime: Double
     let eighthMileTime: Double
     let eighthMileSpeed: Double
     let _1000ftTime: Double
@@ -39,7 +44,7 @@ struct Save: Identifiable {
     // MARK: TableView-related items
     let section: String
     
-    static let example = Save(driverName: "Ethan Mayer", vehicleName: "1969 Chevrolet Camaro Z/28", date: Date(), locationDescription: "Byhalia, MS", latitude: 0, longitude: 0, forecastTemperature: 75, forecastSky: "Cloudy", humidity: 0, atmosphericPressure: 0, reactionTime: 0, _0to60Time: 0, eighthMileTime: 0, eighthMileSpeed: 0, _1000ftTime: 0, quarterMileTime: 0, quarterMileSpeed: 0, wasOnDragStrip: false, section: "Saves")
+    static let example = Save(driverName: "Ethan Mayer", vehicleName: "1969 Chevrolet Camaro Z/28", date: Date(), locationDescription: "Byhalia, MS", latitude: 0, longitude: 0, forecastTemperature: 75, forecastSky: "Cloudy", humidity: 0, atmosphericPressure: 0, reactionTime: 0, _0to60Time: 0, _330ftTime: 0, eighthMileTime: 0, eighthMileSpeed: 0, _1000ftTime: 0, quarterMileTime: 0, quarterMileSpeed: 0, wasOnDragStrip: false, section: "Saves")
 }
 
 extension Save: CustomStringConvertible {
@@ -87,8 +92,8 @@ extension Save: CustomStringConvertible {
         let res = formatter.string(from: coordinate) // "48° 6' 59" N, 122° 46' 31" W"
         
         guard let res = res else {
-            logger.log(level: .error, message: "Failed to convert latitude and longitude to string. Returning empty string.")
-            return ""
+            logger.log(level: .warning, message: "Failed to convert latitude and longitude to string. Returning backup method.")
+            return "\(latitude), \(longitude)"
         }
         
         return res
@@ -100,5 +105,82 @@ extension Save: CustomStringConvertible {
         
         let temperatureStyle = Measurement<UnitTemperature>.FormatStyle(width: .abbreviated, locale: .current)
         return temperatureStyle.format(temperature)
+    }
+    
+    var humidityDescription: String {
+        // https://stackoverflow.com/questions/57618174/how-to-format-decimal-in-swift-to-percentage
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
+        let res = formatter.string(from: NSNumber(value: humidity))
+        
+        guard let res = res else {
+            logger.log(level: .warning, message: "Failed to convert humidity to percentage. Returning backup method.")
+            return String(format: "%.2f%", humidity * 100.0)
+        }
+        
+        return res
+    }
+    
+    var atmosphericPressureDescription: String {
+        let pressure = Measurement<UnitPressure>(value: atmosphericPressure, unit: .kilopascals)
+        //return pressure.formatted()
+        
+        let pressureStyle = Measurement<UnitPressure>.FormatStyle(width: .abbreviated, locale: .current)
+        
+        let converted = pressure.converted(to: .inchesOfMercury)
+        return pressureStyle.format(converted)
+    }
+    
+    func decimalFormatGeneral(_ value: Double, _ description: String) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        //formatter.maximumFractionDigits = 2
+        let res = formatter.string(from: NSNumber(value: value))
+        
+        guard let res = res else {
+            logger.log(level: .warning, message: "Failed to convert \(description) to decimal. Returning backup method.")
+            return String(format: "%f", value)
+        }
+        
+        return res
+    }
+    
+    func decimalFormatSeconds(_ value: Double) -> String {
+        let time = Measurement<UnitDuration>(value: atmosphericPressure, unit: .seconds)
+        let timeStyle = Measurement<UnitDuration>.FormatStyle(width: .abbreviated, locale: .current)
+        return timeStyle.format(time)
+    }
+    
+    func decimalFormatMph(_ value: Double) -> String {
+        let speed = Measurement<UnitSpeed>(value: atmosphericPressure, unit: .metersPerSecond)
+        let speedStyle = Measurement<UnitSpeed>.FormatStyle(width: .abbreviated, locale: .current)
+        let converted = speed.converted(to: .milesPerHour)
+        return speedStyle.format(converted)
+    }
+    
+    var reactionTimeDescription: String {
+        return decimalFormatSeconds(reactionTime)
+    }
+    var _0to60TimeDescription: String {
+        return decimalFormatSeconds(_0to60Time)
+    }
+    var _330ftTimeDescription: String {
+        return decimalFormatSeconds(_330ftTime)
+    }
+    var eighthMileTimeDescription: String {
+        return decimalFormatSeconds(eighthMileTime)
+    }
+    var eighthMileSpeedDescription: String {
+        return decimalFormatMph(eighthMileSpeed)
+    }
+    var _1000ftTimeDescription: String {
+        return decimalFormatSeconds(_1000ftTime)
+    }
+    var quarterMileTimeDescription: String {
+        return decimalFormatSeconds(quarterMileTime)
+    }
+    var quarterMileSpeedDescription: String {
+        return decimalFormatMph(quarterMileSpeed)
     }
 }
