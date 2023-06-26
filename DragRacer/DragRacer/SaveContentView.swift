@@ -114,8 +114,8 @@ struct SaveContentView: View {
                 .padding(.top)
             Text(save.timeDescription)
                 .font(.body)
-            Text(save.locationDescription)
-                .font(.body)
+//            Text(save.locationDescription)
+//                .font(.body)
             List {
                 textRow("Driver", save.driverName)
                 textRow("Vehicle", save.vehicleName)
