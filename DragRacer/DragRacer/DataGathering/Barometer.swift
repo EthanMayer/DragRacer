@@ -11,6 +11,10 @@ import CoreMotion
 import Combine
 import SwiftUILogger
 
+extension String: LocalizedError {
+    public var errorDescription: String? { return self }
+}
+
 class Barometer {
     
     // Initialize pressure sensor
@@ -31,15 +35,15 @@ class Barometer {
                     // Check authorization status of altimeter
                     switch CMAltimeter.authorizationStatus() {
                         case .notDetermined: // Handle state before user prompt
-                            logger.log(level: .info, message: "Altimiter authorization undetermined") //MARK: TODO: .debug
+                            logger.log(level: .info, message: "Altimiter authorization undetermined")
                         case .restricted: // Handle system-wide restriction
-                           fatalError("Altimeter authorization restricted")
+                            promise(.failure("Altimeter authorization restricted"))
                         case .denied: // Handle user denied state
-                            fatalError("Altimeter authorization denied")
+                            promise(.failure("Altimeter authorization denied"))
                         case .authorized: // Ready to go!
-                            logger.log(level: .info, message: "Altimeter authorized") //MARK: TODO: .debug
+                            logger.log(level: .info, message: "Altimeter authorized")
                         @unknown default:
-                            fatalError("Unknown authorization status")
+                            promise(.failure("Unknown authorization status"))
                     }
                     
                     // Start receiving altitude from altimeter
@@ -55,7 +59,7 @@ class Barometer {
                             // Get pressure in inHg
                             self.pressure = Measurement(value: (data?.pressure.doubleValue)!, unit: UnitPressure.kilopascals)/*.converted(to: .inchesOfMercury)*/.value
                             
-                            logger.log(level: .info, message: "Pressure: " + String(self.pressure)) //MARK: TODO: .debug
+                            logger.log(level: .debug, message: "Pressure: " + String(self.pressure))
                             
                             // Stop receiving updates after the pressure has been recorded
                             self.altimeter.stopRelativeAltitudeUpdates()
