@@ -17,6 +17,9 @@
 		30B603BD2A46409100C413BD /* DragRacerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B603BC2A46409100C413BD /* DragRacerUITests.swift */; };
 		30B603BF2A46409100C413BD /* DragRacerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B603BE2A46409100C413BD /* DragRacerUITestsLaunchTests.swift */; };
 		30B603CC2A46454600C413BD /* RaceContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B603CB2A46454600C413BD /* RaceContentView.swift */; };
+		540DDDD32A4A201100519C75 /* GPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DDDD02A4A201100519C75 /* GPS.swift */; };
+		540DDDD42A4A201100519C75 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DDDD12A4A201100519C75 /* Weather.swift */; };
+		540DDDD52A4A201100519C75 /* Barometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DDDD22A4A201100519C75 /* Barometer.swift */; };
 		54E00BDF2A4692E900D1C359 /* SwiftUILogger in Frameworks */ = {isa = PBXBuildFile; productRef = 54E00BDE2A4692E900D1C359 /* SwiftUILogger */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		30B603CB2A46454600C413BD /* RaceContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceContentView.swift; sourceTree = "<group>"; };
 		30B603D32A464E8100C413BD /* SwiftUILogger */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftUILogger; path = ../submodules/SwiftUILogger; sourceTree = "<group>"; };
 		30DA29282A48BDCD00254C93 /* DeveloperConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DeveloperConfig.xcconfig; sourceTree = "<group>"; };
+		540DDDD02A4A201100519C75 /* GPS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPS.swift; sourceTree = "<group>"; };
+		540DDDD12A4A201100519C75 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		540DDDD22A4A201100519C75 /* Barometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		30B6039B2A46409000C413BD /* DragRacer */ = {
 			isa = PBXGroup;
 			children = (
+				540DDDCF2A4A201100519C75 /* DataGathering */,
 				30B6039C2A46409000C413BD /* DragRacerApp.swift */,
 				30B6039E2A46409000C413BD /* ContentView.swift */,
 				30B603A02A46409000C413BD /* Assets.xcassets */,
@@ -149,6 +156,16 @@
 				30B603D32A464E8100C413BD /* SwiftUILogger */,
 			);
 			name = Packages;
+			sourceTree = "<group>";
+		};
+		540DDDCF2A4A201100519C75 /* DataGathering */ = {
+			isa = PBXGroup;
+			children = (
+				540DDDD02A4A201100519C75 /* GPS.swift */,
+				540DDDD12A4A201100519C75 /* Weather.swift */,
+				540DDDD22A4A201100519C75 /* Barometer.swift */,
+			);
+			path = DataGathering;
 			sourceTree = "<group>";
 		};
 		54E00BDD2A4692E900D1C359 /* Frameworks */ = {
@@ -295,9 +312,12 @@
 			files = (
 				30B603A62A46409000C413BD /* Persistence.swift in Sources */,
 				30B603A92A46409000C413BD /* DragRacer.xcdatamodeld in Sources */,
+				540DDDD32A4A201100519C75 /* GPS.swift in Sources */,
+				540DDDD52A4A201100519C75 /* Barometer.swift in Sources */,
 				30B6039F2A46409000C413BD /* ContentView.swift in Sources */,
 				30B6039D2A46409000C413BD /* DragRacerApp.swift in Sources */,
 				30B603CC2A46454600C413BD /* RaceContentView.swift in Sources */,
+				540DDDD42A4A201100519C75 /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
