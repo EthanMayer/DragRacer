@@ -20,6 +20,10 @@
 		540DDDD32A4A201100519C75 /* GPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DDDD02A4A201100519C75 /* GPS.swift */; };
 		540DDDD42A4A201100519C75 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DDDD12A4A201100519C75 /* Weather.swift */; };
 		540DDDD52A4A201100519C75 /* Barometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DDDD22A4A201100519C75 /* Barometer.swift */; };
+		30DA292A2A4A066600254C93 /* SaveContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA29292A4A066600254C93 /* SaveContentView.swift */; };
+		30DA292C2A4A076D00254C93 /* SavesListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA292B2A4A076D00254C93 /* SavesListContentView.swift */; };
+		30DA292F2A4A19BD00254C93 /* LocationFormatter in Frameworks */ = {isa = PBXBuildFile; productRef = 30DA292E2A4A19BD00254C93 /* LocationFormatter */; };
+		30DA29312A4A1F9A00254C93 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DA29302A4A1F9A00254C93 /* Save.swift */; };
 		54E00BDF2A4692E900D1C359 /* SwiftUILogger in Frameworks */ = {isa = PBXBuildFile; productRef = 54E00BDE2A4692E900D1C359 /* SwiftUILogger */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,9 @@
 		540DDDD02A4A201100519C75 /* GPS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPS.swift; sourceTree = "<group>"; };
 		540DDDD12A4A201100519C75 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		540DDDD22A4A201100519C75 /* Barometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barometer.swift; sourceTree = "<group>"; };
+		30DA29292A4A066600254C93 /* SaveContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveContentView.swift; sourceTree = "<group>"; };
+		30DA292B2A4A076D00254C93 /* SavesListContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesListContentView.swift; sourceTree = "<group>"; };
+		30DA29302A4A1F9A00254C93 /* Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DA292F2A4A19BD00254C93 /* LocationFormatter in Frameworks */,
 				54E00BDF2A4692E900D1C359 /* SwiftUILogger in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +129,9 @@
 				30B603A72A46409000C413BD /* DragRacer.xcdatamodeld */,
 				30B603A22A46409000C413BD /* Preview Content */,
 				30B603CB2A46454600C413BD /* RaceContentView.swift */,
+				30DA29292A4A066600254C93 /* SaveContentView.swift */,
+				30DA292B2A4A076D00254C93 /* SavesListContentView.swift */,
+				30DA29302A4A1F9A00254C93 /* Save.swift */,
 			);
 			path = DragRacer;
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 			name = DragRacer;
 			packageProductDependencies = (
 				54E00BDE2A4692E900D1C359 /* SwiftUILogger */,
+				30DA292E2A4A19BD00254C93 /* LocationFormatter */,
 			);
 			productName = DragRacer;
 			productReference = 30B603992A46409000C413BD /* Drag Racer.app */;
@@ -267,6 +279,7 @@
 			);
 			mainGroup = 30B603902A46409000C413BD;
 			packageReferences = (
+				30DA292D2A4A19BD00254C93 /* XCRemoteSwiftPackageReference "LocationFormatter" */,
 			);
 			productRefGroup = 30B6039A2A46409000C413BD /* Products */;
 			projectDirPath = "";
@@ -311,10 +324,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B603A62A46409000C413BD /* Persistence.swift in Sources */,
+				30DA292A2A4A066600254C93 /* SaveContentView.swift in Sources */,
 				30B603A92A46409000C413BD /* DragRacer.xcdatamodeld in Sources */,
 				540DDDD32A4A201100519C75 /* GPS.swift in Sources */,
 				540DDDD52A4A201100519C75 /* Barometer.swift in Sources */,
 				30B6039F2A46409000C413BD /* ContentView.swift in Sources */,
+				30DA29312A4A1F9A00254C93 /* Save.swift in Sources */,
+				30DA292C2A4A076D00254C93 /* SavesListContentView.swift in Sources */,
 				30B6039D2A46409000C413BD /* DragRacerApp.swift in Sources */,
 				30B603CC2A46454600C413BD /* RaceContentView.swift in Sources */,
 				540DDDD42A4A201100519C75 /* Weather.swift in Sources */,
@@ -645,7 +661,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		30DA292D2A4A19BD00254C93 /* XCRemoteSwiftPackageReference "LocationFormatter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/salishseasoftware/LocationFormatter.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		30DA292E2A4A19BD00254C93 /* LocationFormatter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30DA292D2A4A19BD00254C93 /* XCRemoteSwiftPackageReference "LocationFormatter" */;
+			productName = LocationFormatter;
+		};
 		54E00BDE2A4692E900D1C359 /* SwiftUILogger */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftUILogger;
