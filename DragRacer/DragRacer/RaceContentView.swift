@@ -21,10 +21,39 @@ enum Tag: String, LogTagging {
 }
 
 struct ContentView: View {
+    enum RaceButtonType: CustomStringConvertible {
+        case race
+        case abortRace
+        
+        static prefix func !(operand: RaceButtonType) -> RaceButtonType {
+            switch operand {
+            case .race:
+                return .abortRace
+            case .abortRace:
+                return .race
+            }
+        }
+        
+        var description: String {
+            switch self {
+            case .race:
+                return "Race"
+            case .abortRace:
+                return "Abort Race"
+            }
+        }
+    }
+    @State private var raceButtonType = RaceButtonType.race
+    
     init() {
         logger.log(level: .info, message: "init")
     }
 
+    func race() {
+        logger.log(level: .info, message: raceButtonType.description, tags: [Tag.information])
+        raceButtonType = !raceButtonType
+    }
+    
   var body: some View {
       VStack() {
           LoggerView(logger: logger)
@@ -33,18 +62,11 @@ struct ContentView: View {
                 "asd"
               ).lineLimit(nil)
               Button {
-                  logger.log(level: .info, message: "Race pressed")
-                  //race()
-                  
-                  logger.log(
-                                  level: .info,
-                                  message: "onAppear",
-                                  tags: [Tag.home, .information, .web]
-                              )
+                  race()
               } label: {
                   VStack {
                       Image("steeringwheel")
-                      Text("Race")
+                      Text(raceButtonType.description)
                   }
               }
               .buttonStyle(.borderedProminent)
