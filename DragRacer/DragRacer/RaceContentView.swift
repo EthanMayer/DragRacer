@@ -11,16 +11,15 @@ import SwiftUILogger
 let logger = SwiftUILogger(name: "Demo")
 
 enum Tag: String, LogTagging {
-    case activity
-    case analysis
     case information
-    case web
-    case home
+    case barometer
     
     var value: String { self.rawValue }
 }
 
 struct ContentView: View {
+    let barometer = Barometer()
+    
     enum RaceButtonType: CustomStringConvertible {
         case race
         case abortRace
@@ -100,7 +99,17 @@ struct ContentView: View {
           }
       }
     .onAppear {
-        logger.log(level: .info, message: "onAppear")
+        logger.log(level: .info, message: "onAppear", tags: [Tag.information])
+        
+        Task {
+            do {
+                for try await data in barometer.getPressure() {
+                    logger.log(level: .info, message: String(data), tags: [Tag.barometer])
+                }
+            } catch let error {
+                logger.log(level: .error, message: error.localizedDescription, tags: [Tag.barometer])
+            }
+        }
     }
   }
 }

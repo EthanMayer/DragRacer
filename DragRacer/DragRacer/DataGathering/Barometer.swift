@@ -71,6 +71,9 @@ class Barometer {
                         }
                     }
                 }
+                else {
+                    continuation.finish(throwing: "Relative altitude is unavailable")
+                }
             }
         }
     }
