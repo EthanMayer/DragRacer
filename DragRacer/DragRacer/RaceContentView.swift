@@ -42,6 +42,15 @@ struct ContentView: View {
                 return "Abort Race"
             }
         }
+        
+        var image: Image {
+            switch self {
+            case .race:
+                return Image("steeringwheel")
+            case .abortRace:
+                return Image(systemName: "xmark.circle")
+            }
+        }
     }
     @State private var raceButtonType = RaceButtonType.race
     
@@ -52,6 +61,13 @@ struct ContentView: View {
     func race() {
         logger.log(level: .info, message: raceButtonType.description, tags: [Tag.information])
         raceButtonType = !raceButtonType
+    }
+    
+    func onRaceFinished() {
+        // Show stats of the race
+        
+        
+        raceButtonType = .race
     }
     
   var body: some View {
@@ -65,7 +81,7 @@ struct ContentView: View {
                   race()
               } label: {
                   VStack {
-                      Image("steeringwheel")
+                      raceButtonType.image
                       Text(raceButtonType.description)
                   }
               }
